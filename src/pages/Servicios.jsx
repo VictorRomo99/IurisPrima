@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Helmet } from 'react-helmet-async'
 import { useReveal } from '../hooks/useReveal'
 
 const SERVICIOS = [
@@ -130,114 +131,122 @@ export default function Servicios() {
   useReveal()
 
   return (
-    <main className="bg-[#0A0C12] min-h-screen pt-24 relative z-[1]">
+    <>
+      <Helmet>
+        <title>Servicios | Asesoría en Tesis de Derecho – Iuris Prima Huancayo</title>
+        <meta name="description" content="Servicios de asesoría para tesis de pregrado en Derecho: elección del tema, marco teórico, metodología, redacción, corrección y Turnitin. Huancayo, Perú." />
+        <link rel="canonical" href="https://iurisprima.com/servicios" />
+      </Helmet>
 
-      {/* HERO */}
-      <section className="px-15 py-20 border-b border-[#F0C060]/10">
-        <div className="max-w-[1160px] mx-auto">
-          <p className="reveal text-[0.62rem] tracking-[6px] uppercase text-[#F0C060]/60 mb-5">
-            Nuestros servicios
-          </p>
-          <div className="grid grid-cols-2 gap-20 items-end">
-            <h1 className="reveal font-serif font-bold text-white leading-[1.05]"
-              style={{ fontSize: 'clamp(2.2rem, 4vw, 3.8rem)' }}>
-              Todo lo que necesitas{' '}
-              <em className="italic text-[#F0C060]">en un solo lugar</em>
-            </h1>
-            <p className="reveal text-[0.95rem] font-light leading-[2] text-white/55">
-              Cubrimos cada etapa del proceso de elaboración de tu tesis de Derecho de pregrado, desde la elección del tema hasta el documento final con Turnitin. Sin saltos, sin vacíos, sin sorpresas.
+      <main className="bg-[#0A0C12] min-h-screen pt-24 relative z-[1]">
+
+        {/* HERO */}
+        <section className="px-15 py-20 border-b border-[#F0C060]/10">
+          <div className="max-w-[1160px] mx-auto">
+            <p className="reveal text-[0.62rem] tracking-[6px] uppercase text-[#F0C060]/60 mb-5">
+              Nuestros servicios
             </p>
+            <div className="grid grid-cols-2 gap-20 items-end">
+              <h1 className="reveal font-serif font-bold text-white leading-[1.05]"
+                style={{ fontSize: 'clamp(2.2rem, 4vw, 3.8rem)' }}>
+                Todo lo que necesitas{' '}
+                <em className="italic text-[#F0C060]">en un solo lugar</em>
+              </h1>
+              <p className="reveal text-[0.95rem] font-light leading-[2] text-white/55">
+                Cubrimos cada etapa del proceso de elaboración de tu tesis de Derecho de pregrado, desde la elección del tema hasta el documento final con Turnitin. Sin saltos, sin vacíos, sin sorpresas.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* ETAPAS */}
-      <section className="px-15 py-24">
-        <div className="max-w-[1160px] mx-auto">
-          <p className="reveal text-[0.62rem] tracking-[4px] uppercase text-[#F0C060]/60 mb-4">
-            Etapas del proceso
-          </p>
-          <h2 className="reveal font-serif font-bold text-white leading-[1.15] mb-16"
-            style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)' }}>
-            Asesoría integral{' '}
-            <em className="italic text-[#F0C060]">en cada etapa</em>
-          </h2>
+        {/* ETAPAS */}
+        <section className="px-15 py-24">
+          <div className="max-w-[1160px] mx-auto">
+            <p className="reveal text-[0.62rem] tracking-[4px] uppercase text-[#F0C060]/60 mb-4">
+              Etapas del proceso
+            </p>
+            <h2 className="reveal font-serif font-bold text-white leading-[1.15] mb-16"
+              style={{ fontSize: 'clamp(1.8rem, 3vw, 2.8rem)' }}>
+              Asesoría integral{' '}
+              <em className="italic text-[#F0C060]">en cada etapa</em>
+            </h2>
 
-          <div className="grid grid-cols-2 gap-[2px] bg-white/[0.04]">
-            {SERVICIOS.map((s, i) => (
-              <div
-                key={i}
-                className={`reveal cursor-pointer transition-all duration-300 p-12 ${
-                  active === i
-                    ? 'bg-[#0f1219] border-l-2 border-[#F0C060]'
-                    : 'bg-[#0A0C12] border-l-2 border-transparent hover:bg-[#0f1219]'
-                }`}
-                onClick={() => setActive(active === i ? null : i)}
-              >
-                <div className="flex justify-between items-start mb-5">
-                  <div>
-                    <div className="text-[0.65rem] tracking-[3px] text-[#F0C060]/40 mb-3">
-                      {s.num}
+            <div className="grid grid-cols-2 gap-[2px] bg-white/[0.04]">
+              {SERVICIOS.map((s, i) => (
+                <div
+                  key={i}
+                  className={`reveal cursor-pointer transition-all duration-300 p-12 ${
+                    active === i
+                      ? 'bg-[#0f1219] border-l-2 border-[#F0C060]'
+                      : 'bg-[#0A0C12] border-l-2 border-transparent hover:bg-[#0f1219]'
+                  }`}
+                  onClick={() => setActive(active === i ? null : i)}
+                >
+                  <div className="flex justify-between items-start mb-5">
+                    <div>
+                      <div className="text-[0.65rem] tracking-[3px] text-[#F0C060]/40 mb-3">
+                        {s.num}
+                      </div>
+                      <div className="mb-3">{s.icon}</div>
+                      <h3 className={`font-serif text-xl font-bold transition-colors duration-300 ${
+                        active === i ? 'text-[#F0C060]' : 'text-white'
+                      }`}>
+                        {s.title}
+                      </h3>
                     </div>
-                    <div className="mb-3">{s.icon}</div>
-                    <h3 className={`font-serif text-xl font-bold transition-colors duration-300 ${
-                      active === i ? 'text-[#F0C060]' : 'text-white'
+                    <span className={`text-xl transition-all duration-300 shrink-0 mt-2 ${
+                      active === i ? 'text-[#F0C060] rotate-45' : 'text-[#F0C060]/30'
                     }`}>
-                      {s.title}
-                    </h3>
+                      +
+                    </span>
                   </div>
-                  <span className={`text-xl transition-all duration-300 shrink-0 mt-2 ${
-                    active === i ? 'text-[#F0C060] rotate-45' : 'text-[#F0C060]/30'
+
+                  <p className="text-[0.88rem] font-light leading-[1.8] text-white/55 mb-5">
+                    {s.resumen}
+                  </p>
+
+                  <div className={`overflow-hidden transition-all duration-500 ${
+                    active === i ? 'max-h-[400px]' : 'max-h-0'
                   }`}>
-                    +
-                  </span>
-                </div>
-
-                <p className="text-[0.88rem] font-light leading-[1.8] text-white/55 mb-5">
-                  {s.resumen}
-                </p>
-
-                <div className={`overflow-hidden transition-all duration-500 ${
-                  active === i ? 'max-h-[400px]' : 'max-h-0'
-                }`}>
-                  <div className="border-t border-[#F0C060]/10 pt-5">
-                    <ul className="flex flex-col gap-2.5">
-                      {s.detalle.map((d, j) => (
-                        <li key={j} className="flex items-start gap-3 text-[0.85rem] font-light leading-[1.7] text-white/70">
-                          <span className="text-[#F0C060] shrink-0 mt-0.5">—</span>
-                          {d}
-                        </li>
-                      ))}
-                    </ul>
-                    <div className="mt-5 pt-4 border-t border-[#F0C060]/10 flex items-center gap-2">
-                      <span className="text-[0.62rem] tracking-[3px] uppercase text-[#F0C060]/50">
-                        Tiempo estimado:
-                      </span>
-                      <span className="text-[0.82rem] text-[#F0C060] font-serif italic">
-                        {s.tiempo}
-                      </span>
+                    <div className="border-t border-[#F0C060]/10 pt-5">
+                      <ul className="flex flex-col gap-2.5">
+                        {s.detalle.map((d, j) => (
+                          <li key={j} className="flex items-start gap-3 text-[0.85rem] font-light leading-[1.7] text-white/70">
+                            <span className="text-[#F0C060] shrink-0 mt-0.5">—</span>
+                            {d}
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-5 pt-4 border-t border-[#F0C060]/10 flex items-center gap-2">
+                        <span className="text-[0.62rem] tracking-[3px] uppercase text-[#F0C060]/50">
+                          Tiempo estimado:
+                        </span>
+                        <span className="text-[0.82rem] text-[#F0C060] font-serif italic">
+                          {s.tiempo}
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA */}
-      <section className="px-15 pb-24 text-center">
-        <p className="reveal text-[0.9rem] font-light text-white/45 mb-8">
-          ¿Tienes dudas sobre qué servicio necesitas?
-        </p>
-        <Link
-          to="/contacto"
-          className="reveal inline-block px-12 py-5 bg-[#F0C060] text-[#0A0C12] text-[0.78rem] font-medium tracking-[4px] uppercase no-underline rounded-sm transition-opacity duration-200 hover:opacity-88"
-        >
-          Consulta gratuita →
-        </Link>
-      </section>
+        {/* CTA */}
+        <section className="px-15 pb-24 text-center">
+          <p className="reveal text-[0.9rem] font-light text-white/45 mb-8">
+            ¿Tienes dudas sobre qué servicio necesitas?
+          </p>
+          <Link
+            to="/contacto"
+            className="reveal inline-block px-12 py-5 bg-[#F0C060] text-[#0A0C12] text-[0.78rem] font-medium tracking-[4px] uppercase no-underline rounded-sm transition-opacity duration-200 hover:opacity-88"
+          >
+            Consulta gratuita →
+          </Link>
+        </section>
 
-    </main>
+      </main>
+    </>
   )
 }
