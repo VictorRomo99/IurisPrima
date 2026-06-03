@@ -83,42 +83,23 @@ export default function Servicios() {
   return (
     <section
       id="servicios"
-      style={{
-        padding: '120px 60px',
-        background: '#0A0C12',
-        position: 'relative', zIndex: 1,
-      }}
+      className="bg-[#0A0C12] relative z-[1] py-20 sm:py-28 lg:py-[120px] px-4 sm:px-8 lg:px-14"
     >
-      <div style={{ maxWidth: '1160px', margin: '0 auto' }}>
+      <div className="max-w-[1160px] mx-auto">
 
         {/* HEADER */}
-        <p className="reveal" style={{
-          fontSize: '0.62rem', letterSpacing: '4px',
-          textTransform: 'uppercase', color: '#F0C060',
-          marginBottom: '16px', opacity: 0.75,
-          fontFamily: "'DM Sans', sans-serif",
-        }}>
+        <p className="reveal text-[0.62rem] tracking-[4px] uppercase text-[#F0C060] mb-4 opacity-75">
           Cómo te ayudamos
         </p>
-        <h2 className="reveal" style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-          fontWeight: 700, color: '#fff',
-          lineHeight: 1.15, marginBottom: '64px',
-        }}>
+        <h2 className="reveal font-serif font-bold text-white leading-[1.15] mb-12 sm:mb-16"
+          style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)' }}
+        >
           Asesoría integral{' '}
-          <em style={{ fontStyle: 'italic', color: '#F0C060' }}>
-            en cada etapa
-          </em>
+          <em className="italic text-[#F0C060]">en cada etapa</em>
         </h2>
 
-        {/* LAYOUT DOS COLUMNAS */}
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: '1fr 1.3fr',
-          gap: '72px',
-          alignItems: 'start',
-        }}>
+        {/* LAYOUT */}
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.3fr] gap-8 lg:gap-[72px] items-start">
 
           {/* LISTA ACORDEÓN */}
           <div>
@@ -126,63 +107,29 @@ export default function Servicios() {
               <div
                 key={i}
                 onClick={() => setActive(i)}
-                style={{
-                  padding: '28px 0',
-                  borderBottom: '0.5px solid rgba(255,255,255,0.07)',
-                  borderTop: i === 0 ? '0.5px solid rgba(255,255,255,0.07)' : 'none',
-                  cursor: 'pointer',
-                }}
+                className={`py-6 sm:py-7 cursor-pointer border-b border-white/[0.07]
+                  ${i === 0 ? 'border-t border-white/[0.07]' : ''}`}
               >
-                <div style={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                }}>
+                <div className="flex justify-between items-center">
                   <div>
-                    <div style={{
-                      fontSize: '0.65rem', letterSpacing: '3px',
-                      color: active === i ? '#F0C060' : 'rgba(240,192,96,0.35)',
-                      marginBottom: '6px',
-                      fontFamily: "'DM Sans', sans-serif",
-                      transition: 'color 0.3s',
-                    }}>
+                    <div className={`text-[0.65rem] tracking-[3px] mb-1.5 transition-colors duration-300
+                      ${active === i ? 'text-[#F0C060]' : 'text-[#F0C060]/35'}`}>
                       {s.num}
                     </div>
-                    <div style={{
-                      fontFamily: "'Playfair Display', serif",
-                      fontSize: '1.2rem', fontWeight: 700,
-                      color: active === i ? '#F0C060' : '#fff',
-                      transition: 'color 0.3s',
-                    }}>
+                    <div className={`font-serif text-[1.05rem] sm:text-[1.2rem] font-bold transition-colors duration-300
+                      ${active === i ? 'text-[#F0C060]' : 'text-white'}`}>
                       {s.name}
                     </div>
                   </div>
-                  <span style={{
-                    fontSize: '1.2rem',
-                    color: active === i ? '#F0C060' : 'rgba(240,192,96,0.3)',
-                    transform: active === i ? 'rotate(45deg)' : 'rotate(0deg)',
-                    transition: 'all 0.3s',
-                    display: 'inline-block',
-                    lineHeight: 1,
-                    fontWeight: 300,
-                  }}>
+                  <span className={`text-xl font-light leading-none inline-block transition-all duration-300
+                    ${active === i ? 'rotate-45 text-[#F0C060]' : 'rotate-0 text-[#F0C060]/30'}`}>
                     +
                   </span>
                 </div>
 
-                <div style={{
-                  maxHeight: active === i ? '160px' : '0',
-                  overflow: 'hidden',
-                  transition: 'max-height 0.45s ease',
-                  paddingTop: active === i ? '14px' : '0',
-                }}>
-                  <p style={{
-                    fontSize: '0.85rem', fontWeight: 300,
-                    lineHeight: 1.85,
-                    color: 'rgba(232,228,220,0.55)',
-                    margin: 0,
-                    fontFamily: "'DM Sans', sans-serif",
-                  }}>
+                <div className={`overflow-hidden transition-all duration-[450ms] ease-in-out
+                  ${active === i ? 'max-h-[160px] pt-3.5' : 'max-h-0 pt-0'}`}>
+                  <p className="text-[0.82rem] sm:text-[0.85rem] font-light leading-[1.85] text-white/55 m-0">
                     {s.desc}
                   </p>
                 </div>
@@ -190,47 +137,28 @@ export default function Servicios() {
             ))}
           </div>
 
-          {/* PANEL VISUAL */}
-          <div className="reveal" style={{
-            position: 'sticky', top: '120px',
-            background: 'rgba(255,255,255,0.03)',
-            border: '0.5px solid rgba(255,255,255,0.08)',
-            borderRadius: '4px',
-            padding: '52px 44px',
-            minHeight: '380px',
-            display: 'flex', flexDirection: 'column',
-            justifyContent: 'center',
-            transition: 'all 0.35s ease',
-          }}>
-            <div style={{ marginBottom: '20px' }}>
+          {/* PANEL VISUAL — sticky solo en desktop, oculto en móvil */}
+          <div
+            className="reveal hidden lg:flex flex-col justify-center
+              sticky top-[120px]
+              bg-white/[0.03] border border-white/[0.08] rounded-sm
+              p-10 min-h-[380px]
+              transition-all duration-350"
+          >
+            <div className="mb-5">
               {ICONS[SERVICIOS[active].num]}
             </div>
-            <div style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: '6rem', lineHeight: 1,
-              color: 'rgba(240,192,96,0.07)',
-              marginBottom: '20px',
-              userSelect: 'none',
-            }}>
+            <div className="font-serif text-[6rem] leading-none text-[#F0C060]/[0.07] mb-5 select-none">
               {SERVICIOS[active].num}
             </div>
-            <div style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: '1.6rem', fontWeight: 700,
-              fontStyle: 'italic', color: '#F0C060',
-              marginBottom: '16px',
-            }}>
+            <div className="font-serif text-[1.4rem] sm:text-[1.6rem] font-bold italic text-[#F0C060] mb-4">
               {SERVICIOS[active].name}
             </div>
-            <div style={{
-              fontSize: '0.88rem', fontWeight: 300,
-              lineHeight: 1.85,
-              color: 'rgba(232,228,220,0.55)',
-              fontFamily: "'DM Sans', sans-serif",
-            }}>
+            <div className="text-[0.85rem] sm:text-[0.88rem] font-light leading-[1.85] text-white/55">
               {SERVICIOS[active].desc}
             </div>
           </div>
+
         </div>
       </div>
     </section>

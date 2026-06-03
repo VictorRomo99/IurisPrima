@@ -36,173 +36,136 @@ export default function Proceso() {
   return (
     <section
       id="proceso"
-      style={{
-        padding: '120px 60px',
-        background: '#0A0C12',
-        position: 'relative', zIndex: 1,
-      }}
+      className="bg-[#0A0C12] relative z-[1] py-20 sm:py-28 lg:py-[120px] px-4 sm:px-8 lg:px-14"
     >
-      <div style={{ maxWidth: '1160px', margin: '0 auto' }}>
+      <div className="max-w-[1160px] mx-auto">
 
         {/* HEADER */}
-        <p className="reveal" style={{
-          fontSize: '0.62rem', letterSpacing: '4px',
-          textTransform: 'uppercase', color: '#F0C060',
-          marginBottom: '16px', opacity: 0.75,
-          fontFamily: "'DM Sans', sans-serif",
-        }}>
+        <p className="reveal text-[0.62rem] tracking-[4px] uppercase text-[#F0C060] mb-4 opacity-75">
           Cómo trabajamos
         </p>
-        <h2 className="reveal" style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-          fontWeight: 700, color: '#fff',
-          lineHeight: 1.15, marginBottom: '72px',
-        }}>
+        <h2
+          className="reveal font-serif font-bold text-white leading-[1.15] mb-14 sm:mb-16 lg:mb-[72px]"
+          style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)' }}
+        >
           Un proceso{' '}
-          <em style={{ fontStyle: 'italic', color: '#F0C060' }}>
-            transparente
-          </em>
+          <em className="italic text-[#F0C060]">transparente</em>
         </h2>
 
-        {/* PASOS */}
-        <div
-          className="reveal"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(5, 1fr)',
-            gap: '0',
-            position: 'relative',
-          }}
-        >
-          {/* LÍNEA CONECTORA */}
-          <div style={{
-            position: 'absolute',
-            top: '27px', left: '10%', right: '10%',
-            height: '0.5px',
-            background: 'linear-gradient(90deg, transparent, rgba(240,192,96,0.4), transparent)',
-            pointerEvents: 'none',
-          }} />
+        {/* PASOS — mobile: lista vertical / desktop: fila horizontal */}
+        <div className="reveal">
 
-          {PASOS.map((p, i) => (
-            <div
-              key={i}
-              onMouseEnter={() => setActiveStep(i)}
-              style={{
-                display: 'flex', flexDirection: 'column',
-                alignItems: 'center', textAlign: 'center',
-                padding: '0 16px',
-                cursor: 'default',
-              }}
-            >
-              <div style={{
-                width: '54px', height: '54px',
-                border: `0.5px solid ${activeStep === i ? '#F0C060' : 'rgba(240,192,96,0.3)'}`,
-                borderRadius: '50%',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '0.72rem',
-                letterSpacing: '1px',
-                color: activeStep === i ? '#0A0C12' : '#F0C060',
-                background: activeStep === i ? '#F0C060' : '#0A0C12',
-                position: 'relative', zIndex: 1,
-                marginBottom: '24px',
-                transition: 'all 0.3s',
-                fontFamily: "'DM Sans', sans-serif",
-                fontWeight: 500,
-              }}>
-                {p.n}
-              </div>
+          {/* MÓVIL y TABLET: lista vertical con línea lateral */}
+          <div className="flex flex-col gap-0 lg:hidden">
+            {PASOS.map((p, i) => (
+              <div key={i} className="flex gap-5 items-start">
+                {/* Indicador vertical */}
+                <div className="flex flex-col items-center shrink-0">
+                  <div
+                    onClick={() => setActiveStep(i)}
+                    className={`w-11 h-11 rounded-full border flex items-center justify-center
+                      text-[0.7rem] tracking-[1px] font-medium transition-all duration-300 cursor-pointer
+                      ${activeStep === i
+                        ? 'bg-[#F0C060] border-[#F0C060] text-[#0A0C12]'
+                        : 'bg-[#0A0C12] border-[#F0C060]/30 text-[#F0C060]'
+                      }`}
+                  >
+                    {p.n}
+                  </div>
+                  {i < PASOS.length - 1 && (
+                    <div className="w-px flex-1 min-h-[32px] bg-[#F0C060]/15 my-1" />
+                  )}
+                </div>
 
-              <div style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: '0.9rem', fontWeight: 700,
-                color: activeStep === i ? '#F0C060' : '#fff',
-                marginBottom: '8px',
-                transition: 'color 0.3s',
-              }}>
-                {p.title}
+                {/* Texto */}
+                <div className="pb-7">
+                  <div
+                    className={`font-serif text-[0.95rem] font-bold mb-1.5 transition-colors duration-300
+                      ${activeStep === i ? 'text-[#F0C060]' : 'text-white'}`}
+                  >
+                    {p.title}
+                  </div>
+                  <div className="text-[0.78rem] font-light leading-[1.75] text-white/45">
+                    {p.desc}
+                  </div>
+                </div>
               </div>
-              <div style={{
-                fontSize: '0.75rem', fontWeight: 300,
-                lineHeight: 1.75,
-                color: 'rgba(232,228,220,0.45)',
-                fontFamily: "'DM Sans', sans-serif",
-              }}>
-                {p.desc}
+            ))}
+          </div>
+
+          {/* DESKTOP: fila horizontal con línea conectora */}
+          <div className="hidden lg:grid grid-cols-5 gap-0 relative">
+            {/* Línea conectora */}
+            <div className="absolute top-[27px] left-[10%] right-[10%] h-px pointer-events-none"
+              style={{ background: 'linear-gradient(90deg, transparent, rgba(240,192,96,0.4), transparent)' }}
+            />
+
+            {PASOS.map((p, i) => (
+              <div
+                key={i}
+                onMouseEnter={() => setActiveStep(i)}
+                className="flex flex-col items-center text-center px-4 cursor-default"
+              >
+                <div className={`w-[54px] h-[54px] rounded-full border relative z-[1] mb-6
+                  flex items-center justify-center text-[0.72rem] tracking-[1px] font-medium
+                  transition-all duration-300
+                  ${activeStep === i
+                    ? 'bg-[#F0C060] border-[#F0C060] text-[#0A0C12]'
+                    : 'bg-[#0A0C12] border-[#F0C060]/30 text-[#F0C060]'
+                  }`}
+                >
+                  {p.n}
+                </div>
+                <div className={`font-serif text-[0.9rem] font-bold mb-2 transition-colors duration-300
+                  ${activeStep === i ? 'text-[#F0C060]' : 'text-white'}`}
+                >
+                  {p.title}
+                </div>
+                <div className="text-[0.75rem] font-light leading-[1.75] text-white/45">
+                  {p.desc}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
 
         {/* BLOQUE TURNITIN */}
         <div
-          className="reveal"
-          style={{
-            marginTop: '80px',
-            display: 'grid',
-            gridTemplateColumns: 'auto 1fr',
-            gap: '60px', alignItems: 'center',
-            padding: '52px 56px',
-            background: 'rgba(240,192,96,0.04)',
-            border: '0.5px solid rgba(240,192,96,0.2)',
-            borderRadius: '4px',
-            position: 'relative', overflow: 'hidden',
-          }}
+          className="reveal mt-16 sm:mt-20 lg:mt-[80px] relative overflow-hidden rounded-sm
+            border border-[#F0C060]/20 bg-[#F0C060]/[0.04]
+            p-8 sm:p-10 lg:p-[52px_56px]
+            grid grid-cols-1 sm:grid-cols-[auto_1fr] gap-8 sm:gap-10 lg:gap-[60px] items-center"
         >
-          <div style={{
-            position: 'absolute', right: '40px',
-            top: '50%', transform: 'translateY(-50%)',
-            fontFamily: "'Playfair Display', serif",
-            fontSize: '7rem', color: 'rgba(240,192,96,0.04)',
-            letterSpacing: '2px', pointerEvents: 'none',
-            userSelect: 'none', fontStyle: 'italic',
-          }}>
+          {/* Texto decorativo fondo */}
+          <div className="absolute right-8 top-1/2 -translate-y-1/2 font-serif text-[5rem] sm:text-[7rem]
+            text-[#F0C060]/[0.04] pointer-events-none select-none italic leading-none hidden sm:block">
             Turnitin
           </div>
 
-          <div>
-            <div style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: '5.5rem', lineHeight: 1,
-              color: '#F0C060', fontWeight: 700,
-            }}>
+          {/* Número grande */}
+          <div className="relative z-[1]">
+            <div className="font-serif text-[4rem] sm:text-[5.5rem] leading-none text-[#F0C060] font-bold">
               {'<'}10
-              <span style={{
-                fontSize: '1.8rem',
-                color: 'rgba(240,192,96,0.5)',
-              }}>%</span>
+              <span className="text-[1.4rem] sm:text-[1.8rem] text-[#F0C060]/50">%</span>
             </div>
-            <div style={{
-              fontSize: '0.6rem', letterSpacing: '3px',
-              textTransform: 'uppercase',
-              color: 'rgba(240,192,96,0.5)',
-              marginTop: '8px',
-              fontFamily: "'DM Sans', sans-serif",
-            }}>
+            <div className="text-[0.6rem] tracking-[3px] uppercase text-[#F0C060]/50 mt-2">
               Índice de similitud
             </div>
           </div>
 
-          <div>
-            <h4 style={{
-              fontFamily: "'Playfair Display', serif",
-              fontSize: '1.5rem', fontWeight: 700,
-              color: '#fff', marginBottom: '12px',
-            }}>
+          {/* Texto */}
+          <div className="relative z-[1]">
+            <h4 className="font-serif text-[1.2rem] sm:text-[1.5rem] font-bold text-white mb-3">
               Reporte Turnitin incluido en cada entrega
             </h4>
-            <p style={{
-              fontSize: '0.87rem', fontWeight: 300,
-              lineHeight: 1.9, color: 'rgba(232,228,220,0.55)',
-              margin: 0,
-              fontFamily: "'DM Sans', sans-serif",
-            }}>
+            <p className="text-[0.82rem] sm:text-[0.87rem] font-light leading-[1.9] text-white/55 m-0">
               Todos nuestros documentos se entregan con el reporte oficial de Turnitin.
               Trabajamos con citación correcta y contenido original para garantizar
               un índice dentro del rango exigido por tu institución, sin excepciones.
             </p>
           </div>
         </div>
+
       </div>
     </section>
   )

@@ -52,18 +52,20 @@ export default function Contacto() {
       <main className="bg-[#0A0C12] min-h-screen pt-24 relative z-[1]">
 
         {/* HERO */}
-        <section className="px-15 py-20 border-b border-[#F0C060]/10">
+        <section className="px-4 sm:px-8 lg:px-14 py-14 sm:py-20 border-b border-[#F0C060]/10">
           <div className="max-w-[1160px] mx-auto">
             <p className="reveal text-[0.62rem] tracking-[6px] uppercase text-[#F0C060]/60 mb-5">
               Hablemos
             </p>
-            <div className="grid grid-cols-2 gap-20 items-end">
-              <h1 className="reveal font-serif font-bold text-white leading-[1.05]"
-                style={{ fontSize: 'clamp(2.2rem, 4vw, 3.8rem)' }}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-20 items-end">
+              <h1
+                className="reveal font-serif font-bold text-white leading-[1.05]"
+                style={{ fontSize: 'clamp(2rem, 4vw, 3.8rem)' }}
+              >
                 Tu consulta es{' '}
                 <em className="italic text-[#F0C060]">completamente gratuita</em>
               </h1>
-              <p className="reveal text-[0.95rem] font-light leading-[2] text-white/55">
+              <p className="reveal text-[0.9rem] sm:text-[0.95rem] font-light leading-[2] text-white/55">
                 Cuéntanos tu situación y te respondemos por WhatsApp con un diagnóstico claro y sin compromiso. Sin formularios largos, sin esperas, sin rodeos.
               </p>
             </div>
@@ -71,15 +73,14 @@ export default function Contacto() {
         </section>
 
         {/* CONTENIDO */}
-        <section className="px-15 py-24">
-          <div className="grid gap-20 max-w-[1160px] mx-auto items-start"
-            style={{ gridTemplateColumns: '1fr 1.4fr' }}>
+        <section className="px-4 sm:px-8 lg:px-14 py-16 sm:py-20 lg:py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.4fr] gap-12 lg:gap-20 max-w-[1160px] mx-auto items-start">
 
             {/* INFO LATERAL */}
             <div>
 
               {/* WhatsApp */}
-              <div className="reveal mb-12 pb-12 border-b border-[#F0C060]/10">
+              <div className="reveal mb-10 pb-10 border-b border-[#F0C060]/10">
                 <svg className="mb-4 text-[#F0C060]" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.58 3.58 2 2 0 0 1 3.54 1.34h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7a2 2 0 0 1 1.72 2.01z"/>
                 </svg>
@@ -89,14 +90,14 @@ export default function Contacto() {
                 </p>
                 <button
                   onClick={openWA}
-                  className="px-7 py-3 bg-[#25d366] text-white text-[0.72rem] font-medium tracking-[3px] uppercase border-none cursor-pointer transition-all duration-200 hover:bg-[#20ba5a] hover:-translate-y-0.5"
+                  className="px-7 py-3 bg-[#25d366] text-white text-[0.72rem] font-medium tracking-[3px] uppercase border-none cursor-pointer rounded-sm transition-all duration-200 hover:bg-[#20ba5a] hover:-translate-y-0.5"
                 >
                   Abrir WhatsApp
                 </button>
               </div>
 
               {/* Facebook */}
-              <div className="reveal mb-12 pb-12 border-b border-[#F0C060]/10">
+              <div className="reveal mb-10 pb-10 border-b border-[#F0C060]/10">
                 <a
                   href="https://www.facebook.com/profile.php?id=61590127362109"
                   target="_blank"
@@ -128,16 +129,16 @@ export default function Contacto() {
             </div>
 
             {/* FORMULARIO */}
-            <div className="reveal bg-[#F0C060]/[0.03] border border-[#F0C060]/15 p-14">
-              <h3 className="font-serif text-2xl font-bold text-white mb-2">
+            <div className="reveal bg-[#F0C060]/[0.03] border border-[#F0C060]/15 p-7 sm:p-10 lg:p-14">
+              <h3 className="font-serif text-xl sm:text-2xl font-bold text-white mb-2">
                 Cuéntanos tu situación
               </h3>
-              <p className="text-[0.82rem] font-light text-white/40 mb-10 leading-[1.7]">
+              <p className="text-[0.82rem] font-light text-white/40 mb-8 sm:mb-10 leading-[1.7]">
                 Completa los campos y te preparamos un mensaje listo para enviar por WhatsApp.
               </p>
 
-              {/* Nombre + Universidad */}
-              <div className="grid grid-cols-2 gap-8 mb-8">
+              {/* Nombre + Universidad — apilados en móvil */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 sm:gap-8 mb-7 sm:mb-8">
                 <div>
                   <label className="block text-[0.62rem] tracking-[4px] uppercase text-[#F0C060]/60 mb-3">
                     Tu nombre
@@ -165,7 +166,7 @@ export default function Contacto() {
               </div>
 
               {/* Nivel */}
-              <div className="mb-8">
+              <div className="mb-7 sm:mb-8">
                 <label className="block text-[0.62rem] tracking-[4px] uppercase text-[#F0C060]/60 mb-3">
                   Nivel de tesis
                 </label>
@@ -175,7 +176,7 @@ export default function Contacto() {
               </div>
 
               {/* Opciones */}
-              <div className="mb-8">
+              <div className="mb-7 sm:mb-8">
                 <label className="block text-[0.62rem] tracking-[4px] uppercase text-[#F0C060]/60 mb-3">
                   ¿En qué podemos ayudarte?
                 </label>
@@ -184,11 +185,11 @@ export default function Contacto() {
                     <button
                       key={i}
                       onClick={() => setOpcion(op)}
-                      className={`px-5 py-3 text-left text-[0.82rem] font-light border cursor-pointer transition-all duration-200 ${
-                        opcion === op
-                          ? 'bg-[#F0C060]/12 border-[#F0C060]/50 text-[#F0C060]'
+                      className={`px-4 sm:px-5 py-3 text-left text-[0.8rem] sm:text-[0.82rem] font-light border cursor-pointer transition-all duration-200 rounded-sm
+                        ${opcion === op
+                          ? 'bg-[#F0C060]/[0.12] border-[#F0C060]/50 text-[#F0C060]'
                           : 'bg-transparent border-[#F0C060]/15 text-white/50 hover:border-[#F0C060]/30 hover:text-white/80'
-                      }`}
+                        }`}
                     >
                       {opcion === op ? '● ' : '○ '}{op}
                     </button>
@@ -197,7 +198,7 @@ export default function Contacto() {
               </div>
 
               {/* Mensaje */}
-              <div className="mb-8">
+              <div className="mb-7 sm:mb-8">
                 <label className="block text-[0.62rem] tracking-[4px] uppercase text-[#F0C060]/60 mb-3">
                   Mensaje adicional (opcional)
                 </label>
@@ -212,11 +213,12 @@ export default function Contacto() {
 
               <button
                 onClick={handleWA}
-                className="block w-full py-4 bg-[#25d366] text-white text-[0.78rem] font-medium tracking-[4px] uppercase border-none cursor-pointer transition-all duration-200 hover:bg-[#20ba5a] hover:-translate-y-0.5"
+                className="block w-full py-4 bg-[#25d366] text-white text-[0.78rem] font-medium tracking-[4px] uppercase border-none cursor-pointer rounded-sm transition-all duration-200 hover:bg-[#20ba5a] hover:-translate-y-0.5"
               >
                 Enviar consulta por WhatsApp
               </button>
             </div>
+
           </div>
         </section>
       </main>

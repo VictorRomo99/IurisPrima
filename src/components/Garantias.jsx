@@ -71,73 +71,49 @@ export default function Garantias() {
   return (
     <section
       id="garantias"
+      className="relative z-[1] py-20 sm:py-28 lg:py-[120px] px-4 sm:px-8 lg:px-14"
       style={{
-        padding: '120px 60px',
         background: 'rgba(240,192,96,0.025)',
         borderTop: '0.5px solid rgba(240,192,96,0.08)',
         borderBottom: '0.5px solid rgba(240,192,96,0.08)',
-        position: 'relative', zIndex: 1,
       }}
     >
-      <div style={{ maxWidth: '1160px', margin: '0 auto' }}>
+      <div className="max-w-[1160px] mx-auto">
 
-        <p className="reveal" style={{
-          fontSize: '0.62rem', letterSpacing: '4px',
-          textTransform: 'uppercase', color: '#F0C060',
-          marginBottom: '16px', opacity: 0.75,
-          fontFamily: "'DM Sans', sans-serif",
-        }}>
+        {/* HEADER */}
+        <p className="reveal text-[0.62rem] tracking-[4px] uppercase text-[#F0C060] mb-4 opacity-75">
           Lo que prometemos
         </p>
-        <h2 className="reveal" style={{
-          fontFamily: "'Playfair Display', serif",
-          fontSize: 'clamp(2rem, 4vw, 3.2rem)',
-          fontWeight: 700, color: '#fff',
-          lineHeight: 1.15, marginBottom: '64px',
-        }}>
+        <h2
+          className="reveal font-serif font-bold text-white leading-[1.15] mb-12 sm:mb-16"
+          style={{ fontSize: 'clamp(2rem, 4vw, 3.2rem)' }}
+        >
           Nuestras{' '}
-          <em style={{ fontStyle: 'italic', color: '#F0C060' }}>garantías</em>
+          <em className="italic text-[#F0C060]">garantías</em>
         </h2>
 
+        {/* GRID */}
         <div
-          className="reveal"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '2px',
-            background: 'rgba(255,255,255,0.04)',
-          }}
+          className="reveal grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-px"
+          style={{ background: 'rgba(255,255,255,0.04)' }}
         >
           {GARANTIAS.map((g, i) => (
             <div
               key={i}
-              style={{
-                background: '#0A0C12',
-                padding: '44px 36px',
-                transition: 'background 0.3s',
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = '#0f1219'}
-              onMouseLeave={e => e.currentTarget.style.background = '#0A0C12'}
+              className="bg-[#0A0C12] hover:bg-[#0f1219] transition-colors duration-300
+                p-8 sm:p-9 lg:p-[44px_36px]"
             >
-              <div style={{ marginBottom: '18px' }}>{g.icon}</div>
-              <h3 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: '1.05rem', fontWeight: 700,
-                color: '#fff', marginBottom: '10px',
-              }}>
+              <div className="mb-4 sm:mb-[18px]">{g.icon}</div>
+              <h3 className="font-serif text-[1rem] sm:text-[1.05rem] font-bold text-white mb-2.5">
                 {g.title}
               </h3>
-              <p style={{
-                fontSize: '0.83rem', fontWeight: 300,
-                lineHeight: 1.8, color: 'rgba(232,228,220,0.5)',
-                margin: 0,
-                fontFamily: "'DM Sans', sans-serif",
-              }}>
+              <p className="text-[0.8rem] sm:text-[0.83rem] font-light leading-[1.8] text-white/50 m-0">
                 {g.desc}
               </p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   )

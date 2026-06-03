@@ -34,12 +34,13 @@ function IconFB({ size = 16 }) {
 export default function Footer() {
   return (
     <footer className="bg-[#07090F] border-t border-[#F0C060]/10 py-10 relative z-[1]">
-      <div className="max-w-[1160px] mx-auto px-15">
+      <div className="max-w-[1160px] mx-auto px-4 sm:px-8 lg:px-14">
 
-        <div className="grid gap-12 mb-8" style={{ gridTemplateColumns: '2fr 1fr 1fr' }}>
+        {/* GRID PRINCIPAL */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[2fr_1fr_1fr] gap-8 lg:gap-12 mb-8">
 
           {/* MARCA */}
-          <div>
+          <div className="sm:col-span-2 lg:col-span-1">
             <Link to="/" className="inline-block mb-4 no-underline">
               <span className="font-serif text-xl font-bold text-[#F0C060]">
                 Iuris<span className="text-white italic font-normal">Prima</span>
@@ -49,8 +50,7 @@ export default function Footer() {
               Asesoría de tesis de derecho de pregrado. Huancayo, Perú.
             </p>
 
-            {/* REDES — solo aquí */}
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               <a
                 href={`https://wa.me/${WA_NUMBER}`}
                 target="_blank"
@@ -61,7 +61,7 @@ export default function Footer() {
                 <IconWA size={15} />
                 <span className="text-white text-[0.68rem] font-medium tracking-[1px]">WhatsApp</span>
               </a>
-               <a
+              <a
                 href="https://www.facebook.com/profile.php?id=61590127362109"
                 target="_blank"
                 rel="noreferrer"
@@ -109,11 +109,11 @@ export default function Footer() {
         </div>
 
         {/* BOTTOM */}
-        <div className="flex justify-between items-center pt-6 border-t border-white/[0.05]">
-          <span className="text-[0.68rem] text-white/18 tracking-[0.5px]">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-2 pt-6 border-t border-white/[0.05]">
+          <span className="text-[0.68rem] text-white/[0.18] tracking-[0.5px] text-center sm:text-left">
             © 2025 Iuris Prima — Todos los derechos reservados
           </span>
-          <span className="text-[0.68rem] text-white/18 tracking-[0.5px]">
+          <span className="text-[0.68rem] text-white/[0.18] tracking-[0.5px] text-center sm:text-right">
             Asesoría jurídica académica · Huancayo
           </span>
         </div>
